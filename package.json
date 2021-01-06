@@ -1,0 +1,27 @@
+{
+  "name": "daily-algo",
+  "version": "1.0.0",
+  "description": "This repository contains a bunch of solved algorithms from the internet, it starts as a personal challenge to solve al least one coding problem daily.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest",
+    "testFile": "jest "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/N-bred/daily-algo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/N-bred/daily-algo/issues"
+  },
+  "homepage": "https://github.com/N-bred/daily-algo#readme",
+  "dependencies": {
+    "jest": "^26.6.3"
+  }
+}

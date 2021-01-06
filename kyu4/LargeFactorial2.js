@@ -29,9 +29,4 @@ function factorial(n) {
   return arr.reverse().join('')
 }
 
-const INPUT = 125
-const OUTPUT = '720'
-const result = factorial(INPUT)
-
-console.log(result === OUTPUT)
-console.log(result)
+module.exports = factorial

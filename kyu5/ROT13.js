@@ -26,8 +26,4 @@ function ROT13(str) {
     .join('')
 }
 
-const INPUT = 'Guvf vf npghnyyl gur svefg xngn V rire znqr. Gunaxf sbe svavfuvat vg! :)'
-
-const OUTPUT = ROT13(INPUT)
-
-console.log(OUTPUT)
+module.exports = ROT13

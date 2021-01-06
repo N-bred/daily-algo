@@ -39,12 +39,4 @@ function nextBigger(n) {
   return result
 }
 
-// TESTING
-
-const INPUTS = [2017, 12, 513, 414, 144, 111, 9, 531, 491, 40883650394]
-
-const OUTPUTS = [2071, 21, 531, 441, 414, -1, -1, -1, 914, 40883650439]
-
-const results = INPUTS.map((input, i) => nextBigger(input) === OUTPUTS[i])
-
-console.log(results)
+module.exports = nextBigger
