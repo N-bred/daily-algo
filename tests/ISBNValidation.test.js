@@ -1,5 +1,5 @@
 const { expect } = require('@jest/globals')
-const validISBN10 = require('../kyu5')
+const { validISBN10 } = require('../kyu5')
 
 test('Receives a number quantity in a string and returns true if they match ISBN10', () => {
   const INPUTS = ['1112223339', '1234554321', '048665088X']
