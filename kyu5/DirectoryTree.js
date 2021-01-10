@@ -9,31 +9,59 @@ function multiplyStr(str, n) {
   return res
 }
 
-const tree = {
-  Desktop: {
-    meetings: {
-      '2021-01-12': {
-        'notes.txt': 'notes.txt',
-        'report.pdf': 'report.pdf',
-      },
-      '2021-01-24': {
-        'report.pdf': 'report.pdf',
-      },
-      '2020_calendar.xsl': '2020_calendar.xsl',
-    },
-    misc: {
-      photos: {
-        'forest_20130430.jpg': 'forest_20130430.jpg',
-        'sunset_20130412.jpg': 'sunset_20130412.jpg',
-      },
-    },
-    scripts: {
-      'tree.js': 'tree.js',
-    },
-  },
+function isDir(str) {
+  const splitted = str.split('.')
+  return splitted.length < 2
 }
 
-function treeGenerator() {}
+// const tree = {
+//   Desktop: {
+//     meetings: {
+//       '2021-01-12': {
+//         'notes.txt': 'notes.txt',
+//         'report.pdf': 'report.pdf',
+//       },
+//       '2021-01-24': {
+//         'report.pdf': 'report.pdf',
+//       },
+//       '2020_calendar.xsl': '2020_calendar.xsl',
+//     },
+//     misc: {
+//       photos: {
+//         'forest_20130430.jpg': 'forest_20130430.jpg',
+//         'sunset_20130412.jpg': 'sunset_20130412.jpg',
+//       },
+//     },
+//     scripts: {
+//       'tree.js': 'tree.js',
+//     },
+//   },
+// }
+
+const gen = (path) => {
+  if (!path) return
+  const sb = {}
+  const split = path.split('/')
+  const str = split[0]
+
+  if (isDir(str)) {
+    sb[str] = gen(split.slice(1).join('/'))
+  } else {
+    sb[str] = str
+  }
+
+  return sb
+}
+
+function treeGenerator(root, arr) {
+  const tree = {
+    [root]: {},
+  }
+
+  const paths = arr.map((str) => gen(str)).reduce((a, b) => ({ ...a, ...b }), {})
+
+  return paths
+}
 
 const mp = {
   object: 'Dir',
@@ -53,4 +81,17 @@ function printTree(tree, x = 2, y = 0) {
   return str
 }
 
-console.log(printTree(tree))
+const files = [
+  'meetings/2021-01-12/notes.txt',
+  'meetings/2020_calendar.xlsx',
+  'meetings/2021-01-12/report.pdf',
+  'misc/photos/forest_20130430.jpg',
+  'misc/photos/sunset_20130412.jpg',
+  'scripts/tree.py',
+  'meetings/2021-01-24/report.pdf',
+]
+
+const root = 'Desktop'
+
+// console.log(treeGenerator(root, files.sort()))
+console.log(treeGenerator(root, files))
