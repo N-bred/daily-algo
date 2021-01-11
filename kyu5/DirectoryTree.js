@@ -20,28 +20,46 @@ function isDir(str) {
 
 function parseString(path) {
   if (!path) return
-  const sb = {}
-  const split = path.split('/')
-  const str = split[0]
+  const subTree = {}
+  const splittedPath = path.split('/')
+  const current = splittedPath[0]
 
-  if (isDir(str)) {
-    sb[str] = parseString(split.slice(1).join('/'))
+  if (isDir(current)) {
+    subTree[current] = parseString(splittedPath.slice(1).join('/'))
   } else {
-    sb[str] = str
+    subTree[current] = current
   }
 
-  return sb
+  return subTree
 }
 
-function fuseObj(oldObj, newObj) {
-  // See if there is a better and more efficient way to compare objects
-  if (JSON.stringify(oldObj) === JSON.stringify(newObj)) return newObj
+function deepCompareObjects(obj1, obj2) {
+  for (let key in obj1) {
+    if (!!obj1[key] !== !!obj2[key]) return false
 
-  for (let k in oldObj) {
-    if (k in newObj) {
-      newObj[k] = fuseObj(oldObj[k], newObj[k])
+    switch (typeof obj1[key]) {
+      case 'object':
+        if (!deepCompareObjects(obj1[key], obj2[key])) return false
+        break
+      default:
+        if (obj1[key] !== obj2[key]) return false
+    }
+  }
+
+  for (let key in obj2) {
+    if (typeof obj1[key] == 'undefined') return false
+  }
+  return true
+}
+
+function fuseObj(newObj, oldObj) {
+  if (deepCompareObjects(oldObj, newObj)) return newObj
+
+  for (let key in oldObj) {
+    if (key in newObj) {
+      newObj[key] = fuseObj(newObj[key], oldObj[key])
     } else {
-      newObj[k] = oldObj[k]
+      newObj[key] = oldObj[key]
     }
   }
 
@@ -49,22 +67,12 @@ function fuseObj(oldObj, newObj) {
 }
 
 function sortByOrder(a, b) {
-  let i = 0
-  let strI = 0
-
-  while (i < a.length || i < b.length) {
-    if (a[i] === b[i]) {
-      ++strI
-    } else {
-      if (a.charCodeAt(i) < b.charCodeAt(i)) {
-        return 1
-      }
+  for (let i = 0; i < a.length || i < b.length; ++i) {
+    if (a[i] !== b[i]) {
+      if (a.charCodeAt(i) < b.charCodeAt(i)) return 1
       return 0
     }
-
-    ++i
   }
-
   return -1
 }
 
@@ -88,21 +96,21 @@ function treeGenerator(root, arr) {
     [root]: arr
       .sort(comparePathStrings)
       .map((str) => parseString(str))
-      .reduce((a, b) => fuseObj(b, a), {}),
+      .reduce((oldObj, newObj) => fuseObj(oldObj, newObj), {}),
   }
 }
 
-function printTree(tree, x = 2, y = 0) {
-  let str = ''
-  let sx = multiplyStr('─', x)
-  let sy = multiplyStr(multiplyStr(' ', x) + '|', y)
-  for (let k in tree) {
-    str += `${sy}${sx} ${k}: ${MP[typeof tree[k]]}\n`
-    if (typeof tree[k] === 'object') {
-      str += printTree(tree[k], x, y + 1)
+function printObjAsTree(obj, x = 2, y = 0) {
+  let resultString = ''
+  let separatorInX = multiplyStr('─', x)
+  let separatorInY = multiplyStr(multiplyStr(' ', x) + '|', y)
+  for (let key in obj) {
+    resultString += `${separatorInY}${separatorInX} ${key}: ${MP[typeof obj[key]]}\n`
+    if (typeof obj[key] === 'object') {
+      resultString += printObjAsTree(obj[key], x, y + 1)
     }
   }
-  return str
+  return resultString
 }
 
 // TESTING
@@ -120,7 +128,7 @@ const files = [
 const root = 'Desktop'
 const obj = treeGenerator(root, files)
 
-console.log(printTree(obj), JSON.stringify(obj, null, 2))
+console.log(printObjAsTree(obj), JSON.stringify(obj, null, 2))
 
 // Testing ObjCompare
 
