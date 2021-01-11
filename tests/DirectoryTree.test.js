@@ -46,4 +46,22 @@ test('treeGenerator receives a String and a StringArray String[] with different 
   expect(result).toEqual(mockObj)
 })
 
-// console.log(printObjAsTree(obj), JSON.stringify(obj, null, 2))
+const tree = `── Desktop: Dir
+  |── meetings: Dir
+  |  |── 2021-01-12: Dir
+  |  |  |── notes.txt: File
+  |  |  |── report.pdf: File
+  |  |── 2021-01-24: Dir
+  |  |  |── report.pdf: File
+  |  |── 2020_calendar.xlsx: File
+  |── misc: Dir
+  |  |── photos: Dir
+  |  |  |── forest_20130430.jpg: File
+  |  |  |── sunset_20130412.jpg: File
+  |── scripts: Dir
+  |  |── tree.js: File
+`
+
+test('printObjAsTree takes an object with a directory-like structure and prints it to the console as a tree, it should return a string with the tree structure', () => {
+  expect(printObjAsTree(result)).toEqual(tree)
+})
