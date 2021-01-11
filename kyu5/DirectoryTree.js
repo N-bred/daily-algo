@@ -113,45 +113,7 @@ function printObjAsTree(obj, x = 2, y = 0) {
   return resultString
 }
 
-// TESTING
-
-const files = [
-  'misc/photos/forest_20130430.jpg',
-  'meetings/2021-01-24/report.pdf',
-  'meetings/2021-01-12/notes.txt',
-  'meetings/2020_calendar.xlsx',
-  'meetings/2021-01-12/report.pdf',
-  'misc/photos/sunset_20130412.jpg',
-  'scripts/tree.js',
-]
-
-const root = 'Desktop'
-const obj = treeGenerator(root, files)
-
-console.log(printObjAsTree(obj), JSON.stringify(obj, null, 2))
-
-// Testing ObjCompare
-
-// const tree = {
-//   Desktop: {
-//     meetings: {
-//       '2021-01-12': {
-//         'notes.txt': 'notes.txt',
-//         'report.pdf': 'report.pdf',
-//       },
-//       '2021-01-24': {
-//         'report.pdf': 'report.pdf',
-//       },
-//       '2020_calendar.xsl': '2020_calendar.xsl',
-//     },
-//     misc: {
-//       photos: {
-//         'forest_20130430.jpg': 'forest_20130430.jpg',
-//         'sunset_20130412.jpg': 'sunset_20130412.jpg',
-//       },
-//     },
-//     scripts: {
-//       'tree.js': 'tree.js',
-//     },
-//   },
-// }
+module.exports = {
+  treeGenerator,
+  printObjAsTree,
+}
