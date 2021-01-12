@@ -69,3 +69,7 @@ test('Receives an object with a directory-like structure and prints it to the co
 test('Receives a string and returns a boolean on whether or not is a directory path', () => {
   expect(isDir('misc/photos/')).toBe(true)
 })
+
+test('Receives two objects and compares them to see if they are 100% equal, should return a boolean', () => {
+  expect(deepCompareObjects(result, mockObj)).toBe(true)
+})
