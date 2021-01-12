@@ -73,3 +73,9 @@ test('Receives a string and returns a boolean on whether or not is a directory p
 test('Receives two objects and compares them to see if they are 100% equal, should return a boolean', () => {
   expect(deepCompareObjects(result, mockObj)).toBe(true)
 })
+
+test('Receives a string with a path and parses it to an object with a directory-like structure, should return an object with the paths parsed', () => {
+  expect(parseString('misc/photos/forest_20130430.jpg')).toEqual({
+    misc: { photos: { 'forest_20130430.jpg': 'forest_20130430.jpg' } },
+  })
+})
