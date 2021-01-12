@@ -1,5 +1,5 @@
 const {
-  DirectoryTree: { treeGenerator, printObjAsTree },
+  DirectoryTree: { treeGenerator, printObjAsTree, isDir, deepCompareObjects, parseString },
 } = require('../kyu5')
 
 const { expect } = require('@jest/globals')
@@ -42,7 +42,7 @@ const root = 'Desktop'
 
 const result = treeGenerator(root, INPUTS)
 
-test('treeGenerator receives a String and a StringArray String[] with different routes in the following format: "path/path/path", it should parse the strings and return an object with a directory-like structure', () => {
+test('Receives a String and a String[] with different routes in the following format: "path/path/path", it should parse the strings and return an object with a directory-like structure', () => {
   expect(result).toEqual(mockObj)
 })
 
@@ -62,6 +62,10 @@ const tree = `── Desktop: Dir
   |  |── tree.js: File
 `
 
-test('printObjAsTree takes an object with a directory-like structure and prints it to the console as a tree, it should return a string with the tree structure', () => {
+test('Receives an object with a directory-like structure and prints it to the console as a tree, it should return a string with the tree structure', () => {
   expect(printObjAsTree(result)).toEqual(tree)
+})
+
+test('Receives a string and returns a boolean on whether or not is a directory path', () => {
+  expect(isDir('misc/photos/')).toBe(true)
 })

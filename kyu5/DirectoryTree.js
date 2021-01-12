@@ -116,4 +116,7 @@ function printObjAsTree(obj, x = 2, y = 0) {
 module.exports = {
   treeGenerator,
   printObjAsTree,
+  isDir,
+  parseString,
+  deepCompareObjects,
 }
