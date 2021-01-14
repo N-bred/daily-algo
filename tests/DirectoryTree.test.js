@@ -83,3 +83,17 @@ test('Receives a string with a path and parses it to an object with a directory-
 test('Receives a string and a quantity, returns the string times the quantity', () => {
   expect(multiplyStr('Test', 3)).toEqual('TestTestTest')
 })
+
+test('Receives two objects and fuses them into one', () => {
+  expect(
+    fuseObj(
+      { originalProp: 'The original' },
+      { test: 'Test 1', name: 'DirectoryTreeFuseObj', obj: { subProp: 'Recursive Fusing' } }
+    )
+  ).toEqual({
+    originalProp: 'The original',
+    test: 'Test 1',
+    name: 'DirectoryTreeFuseObj',
+    obj: { subProp: 'Recursive Fusing' },
+  })
+})
