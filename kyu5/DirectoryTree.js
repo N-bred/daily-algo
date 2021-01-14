@@ -119,4 +119,6 @@ module.exports = {
   isDir,
   parseString,
   deepCompareObjects,
+  multiplyStr,
+  fuseObj,
 }

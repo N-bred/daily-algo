@@ -1,5 +1,5 @@
 const {
-  DirectoryTree: { treeGenerator, printObjAsTree, isDir, deepCompareObjects, parseString },
+  DirectoryTree: { treeGenerator, printObjAsTree, isDir, deepCompareObjects, parseString, fuseObj, multiplyStr },
 } = require('../kyu5')
 
 const { expect } = require('@jest/globals')
@@ -78,4 +78,8 @@ test('Receives a string with a path and parses it to an object with a directory-
   expect(parseString('misc/photos/forest_20130430.jpg')).toEqual({
     misc: { photos: { 'forest_20130430.jpg': 'forest_20130430.jpg' } },
   })
+})
+
+test('Receives a string and a quantity, returns the string times the quantity', () => {
+  expect(multiplyStr('Test', 3)).toEqual('TestTestTest')
 })
