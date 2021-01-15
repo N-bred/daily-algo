@@ -4,6 +4,7 @@ const validISBN10 = require('./ISBNValidation')
 const minus1IsDivisible = require('./Minus1IsDivisible')
 const DirectoryTree = require('./DirectoryTree')
 const DecoratorPattern = require('./DecoratorPattern')
+const moveZeros = require('./MovingZeros')
 
 module.exports = {
   ROT13,
@@ -12,4 +13,5 @@ module.exports = {
   minus1IsDivisible,
   DirectoryTree,
   DecoratorPattern,
+  moveZeros,
 }
