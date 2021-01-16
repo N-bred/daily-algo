@@ -15,9 +15,14 @@
 // }
 
 function moveZeros(arr) {
-  if (!arr || arr.length < 1) return null
+  if (!Array.isArray(arr) || arr.length < 1) return null
   let length = 0
-  return arr.filter((e) => (e === 0 ? length++ && false : true)).concat(Array.from({ length }, () => 0))
+  return arr
+    .filter((e) => {
+      e === 0 && length++
+      return e !== 0
+    })
+    .concat(Array.from({ length }, () => 0))
 }
 
 module.exports = moveZeros

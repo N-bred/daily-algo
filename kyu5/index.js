@@ -5,6 +5,7 @@ const minus1IsDivisible = require('./Minus1IsDivisible')
 const DirectoryTree = require('./DirectoryTree')
 const DecoratorPattern = require('./DecoratorPattern')
 const moveZeros = require('./MovingZeros')
+const variance = require('./CalculateVariance')
 
 module.exports = {
   ROT13,
@@ -14,4 +15,5 @@ module.exports = {
   DirectoryTree,
   DecoratorPattern,
   moveZeros,
+  variance,
 }
