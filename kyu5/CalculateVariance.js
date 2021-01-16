@@ -21,5 +21,3 @@ function variance(nArr) {
 }
 
 module.exports = variance
-
-// sum of (x ** 2 / n) - mean **2
