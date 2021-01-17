@@ -6,6 +6,7 @@ const DirectoryTree = require('./DirectoryTree')
 const DecoratorPattern = require('./DecoratorPattern')
 const moveZeros = require('./MovingZeros')
 const variance = require('./CalculateVariance')
+const buddy = require('./BuddyPairs')
 
 module.exports = {
   ROT13,
@@ -16,4 +17,5 @@ module.exports = {
   DecoratorPattern,
   moveZeros,
   variance,
+  buddy,
 }
