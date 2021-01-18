@@ -7,6 +7,7 @@ const DecoratorPattern = require('./DecoratorPattern')
 const moveZeros = require('./MovingZeros')
 const variance = require('./CalculateVariance')
 const buddy = require('./BuddyPairs')
+const decomp = require('./FactorialDecomposition')
 
 module.exports = {
   ROT13,
@@ -18,4 +19,5 @@ module.exports = {
   moveZeros,
   variance,
   buddy,
+  decomp,
 }
