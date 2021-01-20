@@ -55,4 +55,25 @@ const formatStr = (arr) => `${arr[0]}${arr[1] > 1 ? `^${arr[1]}` : ''}`
 //   return primeFactors.join(' * ')
 // }
 
+function decomp(n) {
+  const primes = getPrimeNumbers(n)
+  const factors = {}
+
+  for (let i = 2; i < n + 1; ++i) {
+    if (primes.indexOf(i) !== -1) {
+      factors[i] = 1
+    } else {
+      for (let p = 0; p < primes.length; ++p) {
+        let subI = i
+        while (subI % primes[p] === 0) {
+          factors[primes[p]] += 1
+          subI /= primes[p]
+        }
+      }
+    }
+  }
+
+  return Object.entries(factors).map(formatStr).join(' * ')
+}
+
 module.exports = decomp
