@@ -41,5 +41,4 @@ function decomp(n) {
 
   return Object.entries(factors).map(formatStr).join(' * ')
 }
-
 module.exports = decomp
