@@ -9,3 +9,7 @@ test('Receives two arrays and returns one with the difference between the two in
 test('Receives two arrays and returns one with the difference between the two inputs', () => {
   expect(arrayDiff([1, 8, 2], [])).toEqual(expect.arrayContaining([]))
 })
+
+test('Receives two arrays and returns one with the difference between the two inputs', () => {
+  expect(arrayDiff([1, 8, 2, 10], [6, 10])).toEqual(expect.arrayContaining([1, 8, 2]))
+})
