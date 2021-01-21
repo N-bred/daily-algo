@@ -8,3 +8,7 @@ test('Receives a number of seconds and returns a Human Readable Time format as i
 
   expect(results).toEqual(expect.arrayContaining(expected))
 })
+
+test('Receives a string and returns null', () => {
+  expect(HumanReadableTime('Error')).toEqual(null)
+})

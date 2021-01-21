@@ -1,4 +1,5 @@
 function humanReadable(sec) {
+  if (typeof sec != 'number') return null
   const minutes = 1 * 60
   const hours = minutes * 60
   const fmtNumber = (n) => `${n < 10 ? '0' : ''}${n}`
