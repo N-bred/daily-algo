@@ -7,3 +7,7 @@ test('Receives a string in camel case and should return the string splittled', (
 test('Receives a string in camel case and should return the string splittled', () => {
   expect(BreakCamelCase('camelCasing')).toEqual('camel Casing')
 })
+
+test('Receives a string in camel case and should return the string splittled', () => {
+  expect(BreakCamelCase('stringnotincamelcase')).toEqual('stringnotincamelcase')
+})
