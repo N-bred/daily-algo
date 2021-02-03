@@ -7,3 +7,7 @@ test('Receives an array and returns the smallest numbers in it, in the original 
 test('Receives an array and returns the smallest numbers in it, in the original order', () => {
   expect(firstNSmallest([1, 2, 3, -4, 0], 3)).toEqual([1, -4, 0])
 })
+
+test('Receives an array and returns the smallest numbers in it, in the original order', () => {
+  expect(firstNSmallest([2, 1, 2, 3, 4, 2], 4)).toEqual([2, 1, 2, 2])
+})
