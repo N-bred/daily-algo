@@ -7,3 +7,6 @@ test('Receives an array with w and r and should return the correct value', () =>
 test('Receives an array with w and r and should return the correct value', () => {
   expect(calculate1RM([200, 8])).toEqual(253)
 })
+test('Receives an array with w and r and should return the correct value', () => {
+  expect(calculate1RM([400, 0])).toEqual(0)
+})
